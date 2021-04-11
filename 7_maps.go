@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"sort"
 )
 
 func main() {
@@ -19,7 +20,17 @@ func main() {
 	}
 	fmt.Println(counts)
 	for name,value := range counts {
-		fmt.Println(name,value) //隨機跑的 沒有順序
+		fmt.Println(name,value) //counts 隨機跑的 沒有順序
+	}
+
+	grades := map[string]float64{"Edward":99.9,"Alma":72.2,"Carl":55.2}
+	var names []string
+	for name := range grades{
+		names = append(names,name)
+	}
+	sort.Strings(names) //排序後 按照順序 不會隨機
+	for _,name := range names{
+		fmt.Printf("%s has a grade of %0.1f%%\n",name,grades[name])
 	}
 
 	ranks := map[string]int{"bronze": 3, "silver": 2, "gold": 1}
